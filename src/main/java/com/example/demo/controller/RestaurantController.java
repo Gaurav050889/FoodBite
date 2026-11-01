@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 
+import com.example.demo.dto.RestaurantResponse;
 import com.example.demo.entity.Restaurant;
 import com.example.demo.service.RestaurantListService;
 import org.springframework.http.ResponseEntity;
@@ -41,5 +42,10 @@ public class RestaurantController {
     @PostMapping("/register/batch")
     public List<Restaurant> createRestaurant(@RequestBody List<Restaurant> restaurants){
         return restaurantListService.createAllRestaurants(restaurants);
+    }
+
+    @GetMapping("/toprated")
+    public List<RestaurantResponse> findTopRatedRestaurants(){
+        return restaurantListService.listAllTopRestaurants();
     }
 }
